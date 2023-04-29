@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sporty Shoes</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <br>
+    <div class="container" style="text-align:right">
+        <a th:href="@{/adminDashboard}" class="btn btn-secondary btn-sm mb-3">Return to portal</a>
+    </div>
+    <br>
+</head>
+<body>
+
+<div class="container my-2">
+    <div class="container my-2">
+        <h1>Update Product</h1>
+        <form action="#" th:action="@{/updateProduct}" th:object="${shoe}"
+              , method="POST">
+            <table border="1">
+                <tbody>
+                <tr>
+                    <td>Product Id</td>
+                    <td>Product Name</td>
+                    <td>Product Price</td>
+                    <td>Product Category</td>
+                    <td>Operation</td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" th:field="*{id}" placeholder="${shoe.id}"/></td>
+                    <td><input type="text" th:field="*{productname}"
+                               placeholder="${shoe.productname}" class="form-control col-15" required></td>
+                    <td><input type="text" th:field="*{productprice}"
+                               placeholder="${shoe.productprice}" class="form-control col-15" required></td>
+                    <td><input type="text" th:field="*{category}"
+                               placeholder="${shoe.category}" class="form-control col-15" required></td>
+                    <td colspan="2" style="text-align:center">
+                        <button type="submit"
+                                class="btn btn-success col-10">Update Product
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

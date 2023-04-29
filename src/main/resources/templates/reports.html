@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sporty Shoes</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <br>
+    <div class="container" style="text-align:right">
+        <a th:href="@{/adminDashboard}" class="btn btn-secondary btn-sm mb-3">Return to portal</a>
+    </div>
+    <br>
+</head>
+<body>
+<div class="container my-2">
+    <h1>Purchase Reports</h1>
+    <div class="container" style="text-align:right">
+        <form th:action="@{/searchByCategory}" method="POST">
+            <input type="text" name="filteredCategory" Placeholder="Category">
+            <button type="submit" class="btn btn-drk btn-sm mb-3" style="margin-top:12px">Search by Category</button>
+        </form>
+    </div>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Ordered By</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="report : ${reports}">
+            <td th:text="${report.id}"></td>
+            <td th:text="${report.productname}"></td>
+            <td th:text="${report.category}"></td>
+            <td th:text="${report.price}"></td>
+            <td th:text="${report.boughtby}"></td>
+            <td th:text="${report.orderdate}"></td>
+
+            <td><a th:href="@{/deletePurchase/{id}(id=${report.id})}"
+                   class="btn btn-danger">Delete</a></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+</body>
+</html>
